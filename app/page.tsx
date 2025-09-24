@@ -5,10 +5,17 @@ export default function Home() {
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <Image
+        
+          src="https://picsum.photos/400/400"
+          alt="Imagen de prueba"
+          width={400}
+          height={400}
+        />
+        <Image
           className="dark:invert"
           src="/next.svg"
           alt="Next.js logo"
-          width={180}
+          width={100}
           height={38}
           priority
         />
