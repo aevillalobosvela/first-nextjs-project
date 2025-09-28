@@ -1,20 +1,40 @@
+"use client";
 import { NextPage } from 'next'
-import Button from './button';
-
+import { useState } from 'react';
 interface Props { }
 
-const Page: NextPage<Props> = async ({ }) => {
-    console.log("Server");
-
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+async function makePostRequest() {
+    const response = await fetch(`/api/hello`, {
+        method: "POST",
+        body: JSON.stringify({
+            name: "Jsdhsson"
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        },
+    });
     const data = await response.json();
-
     console.log(data);
+    return data;
+}
+
+const Page: NextPage<Props> = ({ }) => {
+    const [message, setMessage] = useState("");
+
+    const onClick = async () => {
+        const data = await makePostRequest();
+        setMessage(data.message);
+    }
+
 
     return (
         <div>
-            otros
-            <Button />
+            <h1>
+                <button onClick={onClick}>
+                    CLICK ME
+                </button>
+                <p>{message}</p>
+            </h1>
         </div>
     );
 };
